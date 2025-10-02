@@ -51,6 +51,6 @@ func TestUnsafeChainStalling_DisabledReqRespSync(gt *testing.T) {
 	sys.L2CLB.ConnectPeer(sys.L2CL)
 	sys.L2CL.ConnectPeer(sys.L2CLB)
 
-	l.Info("Confirm that the unsafe chain for L2CLB is stalled, since L2 batcher is stopped, even though ELSync is enabled on L2CLB")
-	sys.L2CLB.NotAdvanced(types.LocalUnsafe, 10)
+	l.Info("Confirm that the unsafe chain for L2CLB is not stalled, since ELSync is enabled on L2CLB")
+	sys.L2CLB.Advanced(types.LocalUnsafe, ssA_after.UnsafeL2.Number, 30)
 }
